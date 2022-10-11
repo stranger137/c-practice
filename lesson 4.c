@@ -125,35 +125,41 @@ void createList() {
 int main() {
 	int input;
 	while (1) {
-		puts("1 - create linked list\n2 - add element to the end of the list\n3 - delete the last element of the list\n4 - print the list\n5 - delete the list\n6 - find the position of the element\n7 - exit\n");
-		if (scanf("%d", &input) == 0) {
-            puts("wrong input.");
-            return 0;
+		puts("1 - create linked list");
+		puts("2 - add element to the end of the list");
+		puts("3 - delete the last element of the list");
+		puts("4 - print the list");
+		puts("5 - delete the list");
+		puts("6 - find the position of the element");
+		puts("7 - exit\n");
+		scanf("%d", &input);
+		if ((input < 1) || (input > 7)) {
+            puts("Wrong input.\n");
 		};
 		switch (input) {
 		case 1:
 			createList();
-			puts("____");
+			puts("\n");
 			continue;
 		case 2:
 			addElement();
-			puts("____");
+			puts("\n");
 			continue;
 		case 3:
 			deleteLast();
-			puts("____");
+			puts("\n");
 			continue;
 		case 4:
 			showAll();
-			puts("____");
+			puts("\n");
 			continue;
 		case 5:
 			deleteList();
-			puts("____");
+			puts("\n");
 			continue;
 		case 6:
 			findElement();
-			puts("____");
+			puts("\n");
 			continue;
 		case 7:
 			return;
