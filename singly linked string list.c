@@ -2,6 +2,24 @@
 #include <stdlib.h>
 #include <string.h>
 
+const int k = 53;
+const int p = 7;
+
+int hashFunction(char s[]) {
+    int n = strlen(s);
+    int i, curNum;
+    int ans = 0;
+    int curPower = 1;
+    char c;
+    for(i = 0; i < n; i++) {
+        c = s[i];
+        curNum = (int)(c - "a" + 1);
+        curPower = (curPower * k) % p;
+        ans = (ans + curNum * curPower) % p;
+    }
+    return ans;
+}
+
 
 typedef struct node {
     char *value;
@@ -9,7 +27,10 @@ typedef struct node {
 } node;
 
 
-void addElement(node *head, char *value) {
+void addElement(char *value) {
+    hash = hashFunction(element);
+    node *head = mass[hash];
+
     node *newNode, *cur;
     newNode = (node*)malloc(sizeof(node));
     newNode->value = value;
@@ -29,7 +50,10 @@ void addElement(node *head, char *value) {
     return;
 }
 
-void deleteElement(node *head, char *value) {
+void deleteElement(char *value) {
+    hash = hashFunction(element);
+    node *head = mass[hash];
+
     if (head == NULL) {
         printf("There is no such element.");
         return;
@@ -55,7 +79,10 @@ void deleteElement(node *head, char *value) {
 }
 
 
-int findElement(node *head, char *value) {
+int findElement(char *value) {
+    hash = hashFunction(element);
+    node *head = mass[hash];
+
     if (head ==  NULL){
         return 0;
     }
