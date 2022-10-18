@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <Hashf.h>
 
 const int k = 53;
 const int p = 7;
@@ -164,13 +165,13 @@ static PyTypeObject hashf_Type = {
     0,                   	/* tp_new */
 };
 static PyModuleDef simple_module = {
-    PyModuleDef_HEAD_INIT, // обязательный макрос
+    PyModuleDef_HEAD_INIT, // Г®ГЎГїГ§Г ГІГҐГ«ГјГ­Г»Г© Г¬Г ГЄГ°Г®Г±
     "hash table",               // my_plus.__name__
     "table of hashes", // my_plus.__doc__
     -1,
     NULL,
     NULL,
-    NULL           // сюда передаем массив с методами модуля
+    NULL           // Г±ГѕГ¤Г  ГЇГҐГ°ГҐГ¤Г ГҐГ¬ Г¬Г Г±Г±ГЁГў Г± Г¬ГҐГІГ®Г¤Г Г¬ГЁ Г¬Г®Г¤ГіГ«Гї
 };
 
 PyMODINIT_FUNC PyInit_hashf(void)
@@ -186,7 +187,7 @@ PyMODINIT_FUNC PyInit_hashf(void)
             return NULL;
 
     Py_INCREF(&hashf_Type);
-    // x=Linked_List.Create() - так создается объект х класса Linked_List
+    // x=Linked_List.Create() - ГІГ ГЄ Г±Г®Г§Г¤Г ГҐГІГ±Гї Г®ГЎГєГҐГЄГІ Гµ ГЄГ«Г Г±Г±Г  Linked_List
     PyModule_AddObject(m, "Create", (PyObject *)&hashf_Type);
 
     return m;
