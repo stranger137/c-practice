@@ -2,23 +2,6 @@
 #include <string.h>
 #include <singly linked string list.h>
 
-const int k = 53;
-const int p = 7;
-
-int hashFunction(char s[]) {
-    int n = strlen(s);
-    int i, curNum;
-    int ans = 0;
-    int curPower = 1;
-    char c;
-    for(i = 0; i < n; i++) {
-        c = s[i];
-        curNum = (int)(c - "a" + 1);
-        curPower = (curPower * k) % p;
-        ans = (ans + curNum * curPower) % p;
-    }
-    return ans;
-}
 
 int main() {
     int hash, choice;
@@ -41,18 +24,16 @@ int main() {
             case 1:
                 printf("Enter new element: ");
                 scanf("%s", &element);
-                hash = hashFunction(element);
-                addElement(mass[hash], element);
+                addElement(element);
             case 2:
                 printf("Enter the element: ");
                 scanf("%s", &element);
-                hash = hashFunction(element);
                 deleteElement(element);
             case 3:
                 printf("Enter the element: ");
                 scanf("%s", &element);
                 hash = hashFunction(element);
-                int flag = findElement(mass[hash], element);
+                int flag = findElement(element);
                 if (flag) {
                     printf("The element is found. Its hash is %d.", hash);
                 } else {
@@ -61,16 +42,14 @@ int main() {
             case 4:
                 printf("Enter old element: ");
                 scanf("%s", &element);
-                hash = hashFunction(element);
-                int flag = findElement(mass[hash], element);
+                int flag = findElement(element);
                 if (!flag) {
                     printf("There is no such element.");
                 } else {
-                    deleteElement(mass[hash], element);
+                    deleteElement(element);
                     printf("Enter new element: ");
                     scanf("%s", &element);
-                    hash = hashFunction(element);
-                    addElement(mass[hash], element);
+                    addElement(element);
                     printf("The element is changed.");
                 }
             case 5:
